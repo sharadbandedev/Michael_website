@@ -5,7 +5,7 @@ $(document).ready(function() {
     var storedPassword = localStorage.getItem('password');
 
     // Check if the credentials are set
-    if (storedUserID == 'michael@gmail.com' || storedPassword == 'Michael@123') {
+    if (storedUserID == 'RJMC' || storedPassword == 'Michael@123') {
         // Redirect to login page
         window.location.href = 'dashboard.html';
     } else {
@@ -22,7 +22,7 @@ $(document).ready(function() {
         console.log(userID);
         console.log(password);
 
-        if (userID === 'michael@gmail.com' && password === 'Michael@123') {
+        if (userID === 'RJMC' && password === 'Abcd1234!') {
             // Store credentials in local storage
             localStorage.setItem('userID', userID);
             localStorage.setItem('password', password);

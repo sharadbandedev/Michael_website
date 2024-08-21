@@ -3,9 +3,10 @@ $(document).ready(function() {
     // Retrieve credentials from local storage
     var storedUserID = localStorage.getItem('userID');
     var storedPassword = localStorage.getItem('password');
-
+console.log("storedUserID: "+storedUserID);
+console.log("storedPassword: "+storedPassword);
     // Check if the credentials are set
-    if (storedUserID !== 'michael@gmail.com' || storedPassword !== 'Michael@123') {
+    if (storedUserID !== 'RJMC' || storedPassword !== 'Abcd1234!') {
         // Redirect to login page
         window.location.href = 'login.html';
     } else {
