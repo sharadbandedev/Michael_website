@@ -1,0 +1,40 @@
+.srv-OnlineBankingSignIn .srv-BranchAC{overflow:auto;padding:4px 0 20px 0;margin:0 0 10px 0;border-bottom:2px solid #0a4c83}
+.srv-OnlineBankingSignIn .srv-BranchAC p{font-size:13px;line-height:17px}
+.srv-OnlineBankingSignIn .srv-BranchAC .ui-autocomplete-input{float:left;width:200px;padding:2px 14px;margin:5px 6px 0 0;line-height:16px;height:22px}
+.srv-OnlineBankingSignIn .srv-BranchAC input.srv-Button{padding:0 2px;height:22px;*margin:1px 0 0 0;margin-top:5px}
+.srv-OnlineBankingSignIn p{font-size:12px;line-height:100%;color:#333}
+.srv-OnlineBankingSignIn a{font-size:12px;line-height:100%;color:#509C28}
+.srv-OnlineBankingSignIn a:hover{color:#003d1e}
+.srv-OnlineBankingSignIn h6{font:bold 13px/13px "Lucida Sans Unicode","Lucida Grande",sans-serif;color:#005097;margin:0;padding:2px 0 10px 0}
+.srv-OnlineBankingSignIn .srv-BranchAC-Error{font-size:11px;line-height:100%;color:#0a4c83;margin:0 0 12px 0;padding:14px;background-color:#e7ecf0;border-top:1px solid #dde5eb;border-bottom:1px solid #dde5eb}
+.srv-OnlineBankingSignIn .srv-BranchAC-Error a{font-size:11px;line-height:100%;color:#65a742}
+.srv-OnlineBankingSignIn .srv-BranchAC-Error a:hover{color:#003d1e}
+.srv-OnlineBankingSignIn .srv-OnlineBanking-Heading{overflow:auto;border-bottom:2px solid #0a4c83;padding:0 0 6px 0;margin:8px 0}
+.srv-OnlineBankingSignIn .srv-OnlineBanking-Heading h4{font:normal 16px/18px "Lucida Sans Unicode","Lucida Grande",sans-serif;color:#7ab35c;margin:0;padding:0}
+.srv-OnlineBankingSignIn .srv-OnlineBanking-Heading a{float:right;font-size:11px;line-height:12px;vertical-align:middle;text-decoration:none;background:transparent url('/_layouts/ServusInternetTheme/images/servus/bullet_small_green.png') no-repeat 100% center;padding:4px 10px 2px 0}
+.srv-OnlineBankingSignIn .srv-OnlineBanking-Heading a:hover{text-decoration:underline}
+.srv-OnlineBankingSignIn .srv-OnlineBanking-SelectAccount{overflow:auto;margin:0 0 10px 0}
+.srv-OnlineBankingSignIn .srv-OnlineBanking-SelectAccount p{font:normal 13px/130% "Lucida Sans Unicode","Lucida Grande",sans-serif;color:#333}
+.srv-OnlineBankingSignIn .srv-OnlineBanking-SelectAccount .srv-Buttons{float:left;margin:0 24px 0 0}
+.srv-OnlineBankingSignIn .srv-OnlineBanking-SelectAccount .srv-Buttons p{margin:0}
+.srv-OnlineBankingSignIn .srv-OnlineBanking-SelectAccount .srv-Buttons a.srv-Button{float:left;clear:left;width:111px;margin:10px 0 0 0}
+.srv-OnlineBankingSignIn .srv-OnlineBanking-SelectAccount .srv-OnlineBanking-Secure{float:left;overflow:visible;background-color:#e7ecf1;border-top:1px solid #dde5ec;border-bottom:1px solid #dde5ec;margin:24px 0 0 0;padding:12px 8px 12px 12px;width:156px;height:127px}
+.srv-OnlineBankingSignIn .srv-OnlineBanking-SelectAccount .srv-OnlineBanking-Secure img{float:right;width:41px;height:60px;border:0;margin-top:-24px;padding:35px 0 12px 6px}
+.srv-OnlineBankingSignIn .srv-OnlineBanking-SelectAccount .srv-OnlineBanking-Secure h5{font:bold 13px/130% "Lucida Sans Unicode","Lucida Grande",sans-serif;color:#005097;margin:0;padding:10px 0 8px 0}
+.srv-OnlineBankingSignIn .srv-OnlineBanking-SelectAccount .srv-OnlineBanking-Secure p{font-size:12px;line-height:16px}
+#MobileBankingSecure{ width:auto;height:auto;margin:0 20px 0 20px;padding-top:0px;padding-bottom:0px}
+.narrowbrand{padding:10px}
+.srv-OnlineBanking-Footer-rebrand{padding-top:1px}
+.srv-OnlineBanking-Header-rebrand{margin:10px 0 10px 0}
+.srv-OnlineBanking-Header-rebrand a{float:right;margin-top:7px;text-decoration:none}
+.srv-OnlineBanking-Header-IntroText-rebrand{ float:left;margin-bottom:10px}
+.srv-OnlineBanking-Footer-rebrand h6{padding-top:13px}
+.srv-OnlineBanking-Footer-rebrand img{float:left;width:36px;height:49px;border:0;margin-top:-15px;padding:40px 12px 12px 0}
+.srv-OnlineBanking-Footer-Agreement-rebrand{  float:left; height:60px;border:0;margin-top:-24px; padding-top:40px; margin-left:-45px}
+#OnlineBankingModal input[type="text"]{ float:left;padding-bottom:5px;width:200px;padding-right:10px;margin-right:30px;padding-left:5px;padding-top:3px}
+#OnlineBankingModal input[type="button"]{  height:28px;width:47px;margin-top:1px}
+#LoginModalIntroTextPanel{ margin-bottom:12px}
+.right-arrow-modalrebrand{ display:inline-block;position:relative;padding:10px}
+.border-top-modalrebrand{ border-top:2px solid #0072bc}
+#OnlineBankingSignInEnterBranch{  width:500px;float:left;margin-bottom:20px}
+.ModalSignUpQuestion{ margin-top:50px}

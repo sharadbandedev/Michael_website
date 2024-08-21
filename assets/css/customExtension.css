@@ -1,0 +1,1371 @@
+/*------------------------------------------------------------
+
+Custom Extension
+==============================================================
+Place any CSS rules that affect custom webparts and controls
+here.
+
+Author: Nick Bouton, nick@habaneros.com
+
+------------------------------------------------------------*/
+/*
+//-------------------------------------------------------------------------------------------------------
+// Change Log
+// 
+// Programmer   DD/MM/YYYY  WO#     Description
+//-------------------------------------------------------------------------------------------------------
+// TDS          09/06/2011  7328    Added srv-BranchSelector-Prefill
+// TDS          04/06/2011  10135   Modifed txt area and .srv-LoanAppForm .ui-autocomplete-input
+// TDS          26/05/2011  8346    Modifed width .hab-TwoColumnForm .hab-Label so labels are on one row
+// RRR          07/06/2011  10167   Changed two column recaptcha area px.
+//-------------------------------------------------------------------------------------------------------
+*/
+/*------------------------------------------------------------
+
+generic custom button styles
+
+------------------------------------------------------------*/
+
+.srv-Button,
+.ui-widget .srv-Button {
+	float: left;
+	height: 18px;
+	background: #004d8e url('../images/servus/bg_GoButton_blue.jpg') repeat-x 0 0;
+	border: 2px solid #004d8e;
+	border-spacing: 0;
+	padding: 0;
+	margin: 0;
+	/*font: bold 12px/12px "Lucida Sans Unicode", "Lucida Grande", sans-serif !important;*/
+	font: bold 12px/12px 'effra', Arial, 'Helvetica Neue', Helvetica, sans-serif !important;    /* JW */
+	
+	color: #fff !important;
+	text-align: center;
+}
+
+a.srv-Button,
+.ui-widget a.srv-Button {
+	line-height: 14px;
+	height: 14px;
+	text-decoration: none !important;
+	padding: 2px 8px;
+}
+
+body:first-of-type a.srv-Button,
+body:first-of-type .ui-widget a.srv-Button {		/* Safari */
+	padding: 3px 8px 1px 8px;
+}
+
+input.srv-Button,
+.ui-widget input.srv-Button {
+	height: 20px;
+
+	/* IE7 button styling hacks */
+	*filter: chroma(color=#000000); /* remove black border in IE */
+	*height: 22px;		/* IE7 */
+	*margin-top: -1px;	/* IE7 */
+}
+
+.srv-Button.green,
+.ui-widget .srv-Button.green {
+	background-image: url('../images/servus/bg_GoButton_green.jpg');
+	background-color: #4fac24;
+	border-color: #4fac24;
+}
+
+.srv-Button:hover,
+.ui-widget .srv-Button:hover {
+	background-image: url('../images/servus/bg_GoButton_green.jpg');
+	background-color: #4fac24;
+	border-color: #4fac24;
+	cursor: pointer;
+}
+
+a.srv-Button:hover,
+.ui-widget a.srv-Button:hover {
+	text-decoration: none !important;
+}
+
+.srv-Button.green:hover,
+.ui-widget .srv-Button.green:hover {
+	background-image: url('../images/servus/bg_GoButton_blue.jpg');
+	background-color: #004d8e;
+	border-color: #004d8e;
+}
+
+
+/* remove button padding in firefox */ 
+input.srv-Button::-moz-focus-inner,
+.ui-widget input.srv-Button::-moz-focus-inner {
+    border: 0; 
+    padding: 0; 
+} 
+
+
+
+/*------------------------------------------------------------
+
+base (shared) modal dialog styles
+
+------------------------------------------------------------*/
+
+.ui-dialog {
+	/* NOTE: have to force overrides because customExtension.css is loaded before jQuery's CSS */
+	overflow: visible !important;
+	z-index: 20001 !important;
+	border: 4px solid #0a4c83 !important;
+}
+
+.ui-widget-overlay {
+	z-index: 20000 !important;
+}
+
+.ui-widget-header {
+	background: none !important;
+	border: 0 !important;
+	color: #000 !important;
+	z-index: 20003 !important;
+}
+
+.ui-widget-header .ui-icon,
+.ui-icon-closethick {
+	background: none !important;
+}
+
+.ui-dialog .ui-dialog-titlebar {
+	padding: 0 !important;
+	height: 0 !important;
+}
+
+.ui-dialog .ui-dialog-titlebar-close {
+	display: block !important;
+	overflow: hidden !important;
+	position: absolute !important;
+	width: 27px !important;
+	height: 27px !important;
+	padding: 0 !important;
+	margin: 0 !important;
+	border: 0 !important;
+	top: 4px !important;
+	right: 4px !important;
+	text-indent: -100px !important;
+	background: transparent url('../images/servus/bg_Modal-CloseLink.png') no-repeat 0 0 !important;
+	z-index: 20004 !important;
+}
+
+.ui-dialog .ui-dialog-titlebar-close span {
+	display: none !important;
+	margin: 0 !important;
+}
+
+.ui-corner-all  {
+	-moz-border-radius: 0 !important;
+}
+
+.ui-widget-content {
+	background: none !important;
+    text-align: left;
+}
+
+.ui-autocomplete,
+.ui-autocomplete li {
+    background:#ffffff !important;    
+}
+
+.ui-dialog.ui-widget-content {
+	background-color: #fafafa !important;
+}
+
+.ui-widget-overlay {
+	z-index: 19999 !important;
+	background: transparent url('../images/servus/bg_Modal_Overlay.png') repeat 0 0 !important;
+}
+
+.ui-dialog .ui-dialog-content {
+	padding: 24px 32px 12px 32px !important;
+}
+
+.srv-Modal {
+	display: none;
+	position: relative;
+	overflow: visible !important;
+	z-index: 20002 !important;
+    font: 13px/130% 'effra', Arial, 'Helvetica Neue', Helvetica, sans-serif;
+}
+
+.srv-Modal-rebrand {
+    display: none;
+	position: relative;
+	overflow: visible !important;
+	z-index: 20002 !important;
+  -webkit-font-smoothing: antialiased;
+  -moz-font-smoothing: antialiased;
+  -o-font-smoothing: antialiased;
+  font-smoothing: antialiased;
+  font-family: 'effra', Arial, 'Helvetica Neue', Helvetica, sans-serif;
+  font-weight: 400;
+  font-size: 62.5%;
+  line-height: 120%;
+}
+
+.srv-Modal-rebrand h2 {
+	overflow: hidden;
+    font-style:normal;
+    font-size: 30/36pt;
+	margin: 0;
+	padding: 0 0 10px 0;
+	color: #0072bc;
+}
+
+.srv-Modal h3 {
+	overflow: hidden;
+    font: normal 24px/28px FeltTipRomanRegular, 'effra', Arial, 'Helvetica Neue', Helvetica, sans-serif;
+	margin: 0;
+	padding: 0 0 10px 0;
+	color: #0a4c83;
+	text-transform: lowercase;
+}
+
+.srv-Modal h3 a.srv-Print {
+	float: right;
+    font: normal 11px/13px 'effra', Arial, 'Helvetica Neue', Helvetica, sans-serif;
+    color: #00559e;
+	text-transform: none;
+	text-decoration: none;
+	margin: 10px 0 0 0;
+	padding: 0 0 0 14px;
+	background: transparent url('/_layouts/ServusInternetTheme/images/servus/bg_PrintIcon.gif') no-repeat 0 1px;
+}
+
+.srv-Modal h3 a.srv-Print:hover {
+	text-decoration: underline;
+}
+
+
+
+/*------------------------------------------------------------
+
+external calculators - outer container
+
+------------------------------------------------------------*/
+
+.srv-ExternalCalculator {
+	position: relative;
+	z-index: 1;
+}
+
+
+
+/*------------------------------------------------------------
+
+custom calculators - disclaimer box
+
+------------------------------------------------------------*/
+
+.srv-Calculator-Disclaimer {
+	overflow: auto;
+	margin: 0 -9px;
+	padding: 0;
+}
+
+.srv-MyLife .srv-Calculator-Disclaimer div.separator { background-color: #5cb62f; }
+.srv-MyLife .srv-Calculator-Disclaimer div.separatorShadow { background-color: #adda97; }
+
+.srv-Calculator-Disclaimer h6 {
+    font: bold 11px/130% 'effra', Arial, 'Helvetica Neue', Helvetica, sans-serif;
+	margin: 0;
+	padding: 0 20px;
+}
+
+.srv-Calculator-Disclaimer p {
+    font: 11px/130% 'effra', Arial, 'Helvetica Neue', Helvetica, sans-serif;
+	margin: 0;
+	padding: 10px 20px 16px 20px;
+}
+
+
+
+/*------------------------------------------------------------
+
+faq listing
+
+------------------------------------------------------------*/
+
+.srv-Collapsible-List {
+	border-top: 1px solid #50a747;
+	margin: 0;
+	padding: 0 0 20px 0;
+}
+
+.srv-Collapsible-List li {
+	border-bottom: 1px solid #50a747;
+	margin: 0;
+	padding: 12px 10px !important;
+	background: none !important;
+	cursor: pointer;
+}
+
+.srv-Collapsible-List li h6 {
+	font: normal 13px/17px 'effra', Arial, 'Helvetica Neue', Helvetica, sans-serif !important;
+	height: 17px;
+	color: #50a747;
+	background: transparent url('../images/servus/bg_ToggleItem.png') no-repeat 0 0;
+	padding: 0 0 0 22px;
+	margin: 0;
+}
+
+.srv-Collapsible-List li h6.open {
+	background-position: 0 -17px;
+}
+
+.srv-Collapsible-List li p {
+	display: none;
+	font: 13px/130% 'effra', Arial, 'Helvetica Neue', Helvetica, sans-serif !important;
+	color: #333;
+	padding: 12px 0 0 22px;
+	margin: 0;
+}
+
+.srv-Collapsible-List li p:first-child {
+    padding-top: 0;
+}
+
+
+/*------------------------------------------------------------
+
+branch finder user control
+
+------------------------------------------------------------*/
+
+.srv-BranchFinder {
+	width: 100%;
+	overflow: hidden;
+}
+
+.srv-HomePage .srv-BranchFinder {
+	overflow: visible;
+}
+
+.srv-BranchFinder h5 {
+	font: bold 13px/130% 'effra', Arial, 'Helvetica Neue', Helvetica, sans-serif;
+	color: #00559e;
+	background-color: transparent;
+	margin: 0 0 10px 0;
+	padding: 0;
+}
+
+.srv-HomePage .srv-BranchFinder h5 {
+    font: bold 13px/15px 'effra', Arial, 'Helvetica Neue', Helvetica, sans-serif;
+	min-height: 15px;
+	color: #fff;
+    background: transparent url('../images/servus/bg_WPBody_header.jpg') repeat-x 0 0;
+    margin: 0 -9px 12px -9px;
+    width: 212px;
+    padding: 8px 9px;
+    text-transform: none;
+}
+
+.srv-BranchFinder .srv-BranchFinder-Fields {
+	overflow: hidden;
+}
+
+.srv-BranchFinder .srv-BranchFinder-Fields .srv-InputText {
+	float: left;
+/*	font: 11px/100% 'effra', Arial, 'Helvetica Neue', Helvetica, sans-serif; */
+	font: 12px/100% 'effra', Arial, 'Helvetica Neue', Helvetica, sans-serif;        /* JR */
+	font-weight: 400;                       /* JR */
+/*	color: #000; /*                         /* JR */
+    color: #939393;                         /* JR */
+	width: 168px;
+	height: 15px;
+	padding: 1px;
+	*padding: 3px 1px 0 1px;              /* IE7 */
+	margin: 0 6px 0 0;
+}
+
+.srv-BranchSelector-Prefill /* TDS 7328 */
+{
+    color: #999;
+}
+
+.srv-BranchFinder .srv-BranchFinder-Fields .srv-InputText.srv-InputText-Prefill {
+	color: #999;
+}
+
+.srv-BranchFinder .srv-BranchFinder-Fields input.srv-GoButton {
+	float: left;
+	background: #004d8e url('../images/servus/bg_GoButton_blue.jpg') repeat-x 0 0;
+	border: 2px solid #004d8e;
+	border-spacing: 0;
+	width: 30px;
+	height: 20px;
+	padding: 0;
+	margin: 0;
+	font: bold 12px/12px 'effra', Arial, 'Helvetica Neue', Helvetica, sans-serif;
+	color: #fff;
+	text-align: center;
+
+	/* IE7 button styling hacks */
+	*filter: chroma(color=#000000); /* remove black border in IE */
+	*height: 22px;		/* IE7 */
+	*margin-top: -1px;	/* IE7 */
+}
+
+.srv-BranchFinder .srv-BranchFinder-Fields input.srv-GoButton:hover {
+	background-image: url('../images/servus/bg_GoButton_green.jpg');
+	background-color: #4fac24;
+	border-color: #4fac24;
+	cursor: pointer;
+}
+
+/* remove button padding in firefox */ 
+.srv-BranchFinder .srv-BranchFinder-Fields input.srv-GoButton::-moz-focus-inner {
+    border: 0;
+    padding: 0; 
+} 
+
+
+/*------------------------------------------------------------
+
+General Form Styles
+
+------------------------------------------------------------*/
+
+fieldset {
+    border: 0;
+    margin: 0;
+    padding: 0;
+}
+
+.hab-Form {
+    background:none repeat scroll 0 0 #F2F9EF;
+    border-bottom:1px solid #E6F3E0;
+    border-top:1px solid #E6F3E0;
+}
+
+.hab-Form .hab-Buttons {
+	padding: 10px 20px;
+	overflow: hidden;
+}
+
+.hab-BackAnchor {
+    background:url('../images/servus/bullet_small_green_left.gif') no-repeat left;
+    font-size:11px;
+    padding: 0 0 0 10px;    
+    text-decoration:none !important;
+}
+
+.hab-ParagraghIntro {
+    margin: 0 0 15px 11px;
+}
+
+.hab-SectionHeader .hab-ParagraghIntro,
+.hab-SectionHeader .hab-BackAnchor{
+    margin: 0 0 10px 20px;
+}
+
+.hab-LabelInput {
+    clear:both;
+    overflow: auto;
+    padding:5px 0px;
+    /*width: 100%;*/
+}
+
+.hab-Form label,
+.hab-Form span {    
+    /*display:block;*/
+    float:left;
+    font: 11px 'effra', Arial, 'Helvetica Neue', Helvetica, sans-serif;        /* JW */
+}
+
+.hab-Form .hab-Label {    
+    font-weight:bold;
+    text-align:right;
+}
+
+.hab-Form .hab-InputText,
+.hab-Form .hab-Select,
+.hab-Form .hab-SelectLong,
+.hab-Form .hab-InputTextMedium,
+.hab-Form .hab-InputTextMediumPlus,
+.hab-Form .hab-InputTextSmall,
+.hab-Form .hab-InputTextXSmall,
+.hab-Form .hab-InputTextarea,
+.hab-Form .hab-InputTextareaBig,
+.hab-Form .hab-RadioButtonList {
+    float:left;
+    height: 16px;
+    /*margin:6px 10px 6px 5px;*/
+    margin:6px 10px 6px -1px;
+}
+
+.hab-Form .hab-SelectBig {
+    width: 324px;
+}
+
+.hab-Form .hab-InputTextMedium {
+    width: 125px;
+}
+
+.hab-Form .hab-InputTextMediumPlus {
+    width:220px;
+}
+
+.hab-Form .hab-InputTextSmall {
+    width: 75px;
+}
+
+.hab-Form .hab-InputTextXSmall {
+    width: 50px;
+}
+
+.hab-Form input,
+.hab-Form textarea,
+.hab-Form select {
+	font: 12px 'effra', Arial, 'Helvetica Neue', Helvetica, sans-serif;
+}
+
+.hab-Form select,
+.hab-Form .hab-Select {
+    height: 22px !important;
+}
+
+.hab-Form .hab-Select {    
+    width:220px;
+}
+
+.hab-Form .hab-CheckBox {
+    margin:10px 0 0 0px;
+}
+
+.hab-Form .hab-CheckBox input {
+    float:left;
+    height:15px;
+    margin:0 10px 0 0;
+    padding:0;
+}
+
+.hab-Form .hab-CheckBox label {
+    font-weight:bold;
+    margin:0;
+}
+
+.hab-Form .hab-RadioButtonList {
+    margin-left:0px;
+}
+
+.hab-Form .hab-RadioButtonList input {
+    float:left;    
+}
+
+.hab-Form .hab-RadioButtonList label {
+    margin:2px 10px 0 0;
+}
+
+.hab-Form .hab-DisclosureText {
+	font: 11px 'effra', Arial, 'Helvetica Neue', Helvetica, sans-serif;
+	margin:0 auto;
+	padding: 10px 20px;
+	width:420px;
+}
+
+.hab-ReportButton {
+    background:none repeat scroll 0 0 #003F73;
+    border:2px solid #005095;
+    color:#FFFFFF;
+    float:right;
+    font:12px 'effra', Arial, 'Helvetica Neue', Helvetica, sans-serif; /* JW */
+    height:10px;
+    margin:0 10px 0 0;
+    padding:0 5px 5px;
+    position:relative;
+    text-decoration:none;
+    top:-110px;
+}
+
+.hab-ReportButton:hover {
+    color:#fff;
+}
+
+.hab-Submit,
+.hab-ContentContainer .ms-WPBody a.hab-Submit {
+    background:url("../images/servus/bullet_submit_button.png") no-repeat scroll 98% 50% #003F73;
+    border:3px solid #005095;
+    clear:both;
+    color:#FFFFFF;
+    font:bold 12px 'effra', Arial, 'Helvetica Neue', Helvetica, sans-serif; /* JW */
+    height:41px;
+    margin:20px 0;
+    padding:0 28px 0 5px;
+    *padding:0 15px 0 5px; /* IE7 Hack*/
+    text-align:left;
+}
+
+.hab-ContentContainer .ms-WPBody a.hab-Submit {
+	float: left;
+	line-height: 41px;
+	font-size: 13px;
+	padding: 0 40px 0 12px;
+	text-decoration: none;
+	background-position: 97% center;
+}
+
+input.hab-Submit:hover,
+a.hab-Submit:hover,
+.hab-ContentContainer .ms-WPBody a.hab-Submit:hover {
+    background-color:#53A32A !important;    
+	border:3px solid #4fac24 !important;
+	color:#fff;
+	cursor:pointer;
+	text-decoration:none !important;
+}
+
+.dash {
+    color:#333;
+    margin:10px 5px 0 0;
+}
+
+/* Required Fields */
+
+.hab-RequiredMsg{    
+    font-style:italic !important;
+    margin:10px 0;
+    text-align:right;
+    width:98%;
+}
+/*
+em {
+    color:#64A740;
+    margin:5px
+}
+    */
+
+.hab-ReqValidator,
+.hab-SubReqValidator,
+.hab-ReqValidator-NaN,
+.hab-ReqValidator-Date,
+.hab-ReqValidator-TextArea,
+.hab-ReqValidator-List-FourItems {
+    background: #F4E102;
+    color:#F4E102 !important;
+    display:none;
+    height:22px;
+    margin:6px 5px 6px -11px !important;
+    padding:0;
+    width:6px;  
+}
+
+.hab-ReqValidator-TextArea {
+    height:75px;
+}
+
+/* Add & Remove buttons */
+
+.hab-Form .MultiFile-remove {
+    background: url("../images/servus/bg_close_item.png") no-repeat scroll 2px 4px transparent;
+    cursor:pointer;
+    float:right;
+    font-size:12px;    
+    margin: 8px 10px 0 0;
+    padding: 0 0 0 15px;
+    text-decoration:none !important;    
+}
+
+.hab-Form .MultiFile-Add {
+    background:url("../images/servus/bg_add_item.png") no-repeat scroll 2px 3px transparent;
+    color:#007DA4 !important;
+    cursor:pointer;
+    display:inline-block;
+    font-size:11px;
+    margin:0 0 10px 45%;
+    padding:0 0 0 15px;
+    text-decoration:none !important;
+    
+}
+
+/* Form Calendar */
+
+.ui-datepicker {
+    background:#ffffff !important;
+}
+
+.ui-datepicker .ui-widget-header .ui-icon {	
+	background-image: url('/_layouts/Habanero/Common/css/ui-lightness/images/ui-icons_228ef1_256x240.png') !important;
+}
+
+.ui-datepicker .ui-icon-circle-triangle-w {
+    background-position:-80px -192px !important;
+}
+
+.ui-datepicker .ui-icon-circle-triangle-e {
+    background-position:-48px -192px !important;
+}
+
+/* Captcha */
+#recaptcha_area {
+    margin:20px;
+    overflow:hidden;
+    width: 450px !important;                /* JR */
+}
+
+#recaptcha_area .recaptchatable {
+    border:none !important;
+}
+
+#recaptcha_area .recaptchatable .recaptcha_image_cell {
+    background:none;
+}
+
+#recaptcha_area .recaptchatable #recaptcha_response_field {         /* JR */
+  color: #939393 !important;
+  border: 1px solid #b7b7b7 !important;
+  font: inherit !important;
+/*  font: 12px 'effra', Arial, 'Helvetica Neue', Helvetica, sans-serif; */
+  font-size: 14px !important;
+  line-height: 100% !important;
+  padding: 8px;
+}
+
+#recaptcha_area .recaptchatable td {
+    padding:0 0 0 7px !important;
+}
+
+#recaptcha_area .recaptchatable td #recaptcha_logo,
+#recaptcha_area .recaptchatable td #recaptcha_tagline {
+    display:none;
+}
+
+.recaptcha_only_if_privacy {                /* JR */
+  white-space: nowrap;
+}
+
+.recaptcha_only_if_privacy a,
+.recaptcha_only_if_privacy a:hover {        /* JR */
+  color: #77bf44 !important;
+  line-height: 150%;
+  font: inherit !important;
+  font-size: 14px !important;
+}
+
+/*------------------------------------------------------------
+
+Three Columns Forms
+
+------------------------------------------------------------*/
+
+.hab-ThreeColumnForm {
+    padding:10px 0 50px;
+    width:460px;
+}
+
+.hab-ThreeColumnForm .hab-Label,
+.hab-ThreeColumnForm .hab-RequestTypeLabel {
+    margin:5px 20px 0 15px;
+    padding:5px 0 0;
+    width:110px;
+}
+
+.hab-ThreeColumnForm .hab-RequestTypeLabel {
+    margin-top: 2px;
+}
+
+
+.hab-ThreeColumnForm .hab-InputText,
+.hab-ThreeColumnForm .hab-InputText-Validator2 {
+    width:285px;
+}
+
+.hab-ThreeColumnForm .hab-InputTextarea{
+    height:98px;
+    width:285px;
+}
+
+.hab-ThreeColumnForm a.hab-Submit{    
+    display:block;
+    float:none !important;
+    margin:0 0 0 125px !important;
+    width:40px;
+}
+
+.hab-ThreeColumnForm .hab-ReqValidator-TextArea {
+    height:101px;
+}
+
+/* captcha */
+
+.hab-ThreeColumnForm  #recaptcha_area {
+    margin:20px 0 0;
+}
+
+.hab-ThreeColumnForm #recaptcha_area .recaptchatable {
+    float:right;
+}
+
+.hab-ThreeColumnForm  #recaptcha_area .recaptchatable .recaptcha_image_cell {
+    background:none repeat scroll 0 0 transparent;
+    padding:0 0 0 25px !important;
+    width:275px;
+}
+
+.hab-ThreeColumnForm .recaptchatable #recaptcha_image {    
+    overflow:hidden;
+    width:275px !important;
+}
+
+.hab-ThreeColumnForm .recaptchatable .recaptcha_image_cell center img,
+.hab-ThreeColumnForm #recaptcha_area .recaptchatable #recaptcha_response_field {
+    width:275px !important;
+}
+
+.hab-ThreeColumnForm .recaptchatable .recaptcha_input_area {
+    margin-left:20px;
+}
+
+/*------------------------------------------------------------
+
+Two Columns Forms
+
+------------------------------------------------------------*/
+
+.hab-TwoColumnForm {    
+    margin-top:20px;
+    padding:0 10px 10px 0;
+}
+
+.hab-TwoColumnForm .hab-FormSubsection {
+    background:#E6F3E0;
+    border-bottom:1px solid #DAEED2;
+    border-top:1px solid #DAEED2;
+    margin:20px 10px 20px 20px;
+}
+
+.hab-TwoColumnForm .hab-FormSubsection .hab-Label {
+    margin-left: 81px;
+}
+
+.hab-TwoColumnForm .hab-Subsection {
+    background:#F7FBEF;    
+}
+
+.hab-TwoColumnForm .hab-Subsection .hab-Label {
+    margin-left: 61px;
+}
+
+.hab-TwoColumnForm h2 {
+    padding:20px 20px 0;
+    text-align:left;
+    text-transform:none !important;
+}
+
+.hab-TwoColumnForm .hab-Label {
+    margin:10px 20px 0 101px;    
+    width:220px; /* TDS 8346 */
+}
+
+.hab-TwoColumnForm .hab-InputText {
+    width:324px;
+}
+
+.hab-TwoColumnForm .hab-InputTextarea{    
+    height:71px;    
+    width:325px; /* TDS 10135 */
+}
+
+.hab-TwoColumnForm .hab-InputTextareaBig {
+    color:#666666;
+    font-size:11px;
+    height:130px;
+    width:325px; /* TDS 10135 */
+}
+
+.hab-TwoColumnForm .hab-Submit{    
+    display:block;
+    float:none !important;
+    margin-left:245px !important;     
+    width:auto;
+    /**width:25%;/*IE 7*/
+}
+
+.srv-JobForm .hab-Submit,
+.srv-JobForm .hab-DisabledBtn{
+    margin-left:225px !important;
+    width:160px;
+}
+
+.srv-ForExchangeForm .hab-Submit,
+.srv-BusLoanAppForm .hab-Submit {
+    margin-left:225px !important;
+    width:42px;
+}
+
+.hab-TwoColumnForm .hab-CheckBox input {
+    margin-left:245px;
+}
+
+.hab-TwoColumnForm .hab-RadioButtonList {
+    margin-top:10px;
+    /*height:auto; bug 7406*/
+}
+
+/* captcha */
+
+.hab-TwoColumnForm #recaptcha_area {
+    margin:20px 20px 20px 235px;
+}
+
+/* Load File Section */
+
+.hab-TwoColumnForm .hab-Text {
+	font: 11px 'effra', Arial, 'Helvetica Neue', Helvetica, sans-serif;
+    margin-left:20px;
+}
+
+.hab-TwoColumnForm .multi {
+    height:auto;
+    margin-bottom:10px;
+}
+
+.hab-TwoColumnForm .MultiFile-wrap {
+    float:left;
+}
+
+.MultiFile-wrap .MultiFile-label {
+    clear:both;
+    margin-left:10px;
+    min-width:300px;
+    padding-left:5px;
+}
+
+.MultiFile-wrap .MultiFile-title {
+    margin-right:10px;
+}
+
+.MultiFile-wrap .MultiFile-remove {    
+    float:left;
+    margin: -2px 0 0 0;
+}
+
+.hab-Form .hab-FieldText {
+    font-weight:bold;
+    margin-right:10px;
+    margin-top:10px;
+}
+
+
+/* Loan Application Form */
+
+.srv-LoanAppForm {
+    margin-top:10px;
+}
+
+.srv-LoanAppForm .hab-RadioButtonList label {
+    font-weight:bold;
+    margin:0 30px 0 0;
+    padding:2px 0 0;
+}
+
+.srv-LoanAppForm .srv-MoreContentLink {
+    display:inline-block;
+    font-size:11px;
+    margin:10px 0 0;
+    text-decoration:none !important; 
+}
+
+.srv-LoanAppForm .ui-autocomplete-input {
+    float:left;
+    height:22px;
+    margin:6px 10px 6px 0px;
+    width:230px; /* TDS 10135 */
+}
+
+.srv-LoanAppForm .srv-IConsentChkBox {
+    float:right;
+    margin:10px 167px 0 0;
+    /*width:290px;*/
+}
+
+.srv-LoanAppForm .srv-IConsentChkBox input {
+    margin-left:0px;
+}
+
+.srv-LoanAppForm .hab-IConsentReqValidator {
+    margin-left:230px !important;
+}
+
+.srv-JobForm .hab-InputTextareaBig {
+    color:#333;
+    background:#fff;
+}
+
+.hab-NextBtn {
+    clear:none !important;
+    float:right !important;    
+}
+
+.hab-PreviousBtn {
+    background:url("../images/servus/bullet_submit_button_left.png") no-repeat scroll left center #003F73 !important;
+    border:3px solid #005095;
+    clear:both;
+    color:#FFFFFF !important;
+    float:left;
+    font:bold 13px/41px 'effra', Arial, 'Helvetica Neue', Helvetica, sans-serif;    /* JW */
+    height:41px;
+    margin:20px 0;
+    padding:0 5px 0 27px !important;
+    text-align:right !important;
+    text-decoration:none !important;
+}
+
+.hab-DisabledBtn,
+.hab-DisabledBtn:hover {
+    background:url("../images/servus/bullet_submit_button.png") no-repeat scroll 98% 50% #999999;    
+    border:3px solid #888888 !important;
+    color:#FFFFFF !important;
+    cursor:default;    
+    float:left;    
+    font:bold 13px/41px 'effra', Arial, 'Helvetica Neue', Helvetica, sans-serif;    /* JW */
+    height:41px;
+    line-height:41px;
+    margin:20px 0;
+    padding:0 40px 0 12px;
+    text-align:left;
+    text-decoration:none !important;
+}
+
+/* Business Loan Form */
+
+.srv-ConfidentialItems {
+    padding:20px;
+}
+
+.srv-ConfidentialItems ul {
+    margin-left:20px;
+}
+
+/* Personal Account Form */
+
+.hab-PersonalAccount .hab-Text {
+    
+}
+
+.hab-PersonalAccount .srv-Column{
+    float:left;
+    margin:10px 0 0 20px;
+    width:200px;
+}
+
+.hab-PersonalAccount .hab-CheckBox {
+    margin:0 0 10px;
+    width:100%;
+}
+
+.hab-PersonalAccount .hab-CheckBox input {
+    margin-left:0px;    
+}
+
+.hab-PersonalAccount .hab-InputTextareaBig {
+    height:100px;
+    margin:6px 0 6px 20px;
+    width:670px;
+}
+
+.hab-PersonalAccount .srv-Disclosure {
+    height:150px;
+}
+
+.hab-PersonalAccount .srv-IConsentChkBox {
+    margin-left:20px;
+    width:auto;
+}
+
+.hab-PersonalAccount .srv-IConsentChkBox label {
+    width:600px;    
+}
+
+.hab-PersonalAccount #recaptcha_area {
+    margin:20px 20px 20px 12px;
+}
+
+
+/*------------------------------------------------------------
+
+Validation Summary
+
+------------------------------------------------------------*/
+
+.srv-ValidationSummary {
+    margin: 20px 0 0;
+}
+
+.srv-ValidationSummary h4 {
+    background:url("../images/servus/bg_req_fields_msg.gif") repeat-x scroll center top transparent;
+    border-bottom:none !important;
+    color:#333333 !important;
+    font-weight:bold;
+    height:22px;
+    margin:0 !important;
+    padding:5px 0 0 17px !important;
+}
+
+.srv-ValidationSummary ul {
+    background: #FFFDEE;
+    border-bottom: 1px solid #F8E014;
+    border-top: 1px solid #FCF37D;
+    padding:10px 0 10px 17px;
+}
+
+.srv-ValidationSummary ul li {
+    background: url('../images/servus/bullet_req_fields.gif') no-repeat 0 6px !important;
+    color:#333;
+    font-weight:normal;   
+}
+
+
+/*------------------------------------------------------------
+
+Error Summary
+
+------------------------------------------------------------*/
+
+.srv-ErrorSummary {
+    margin: 20px 0 0;
+}
+
+.srv-ErrorSummary h4 {
+    background:url("../images/servus/bg_req_fields_msg.gif") repeat-x scroll center top transparent;
+    border-bottom:none !important;
+    color:#333333 !important;
+    font-weight:bold;
+    height:22px;
+    margin:0 !important;
+    padding:5px 0 0 17px !important;
+}
+
+.srv-ErrorSummary p {
+    background: #FFFDEE;
+    border-bottom: 1px solid #F8E014;
+    border-top: 1px solid #FCF37D;
+    padding:10px 0 10px 17px;
+    color:#333;
+    font-weight:normal;   
+}
+
+/*------------------------------------------------------------
+
+Personal Account Steps List
+
+------------------------------------------------------------*/
+
+.hab-ContentContainer .ms-WPBody .hab-StepList ul.hab-ListStep1,
+.hab-ContentContainer .ms-WPBody .hab-StepList2 ul.hab-ListStep1 {
+    background:url("../images/servus/bg_paccount_stepsList_1.png") no-repeat right center;
+}
+
+.hab-ContentContainer .ms-WPBody .hab-StepList ul.hab-ListStep2,
+.hab-ContentContainer .ms-WPBody .hab-StepList2 ul.hab-ListStep2 {
+    background:url("../images/servus/bg_paccount_stepsList_2.png") no-repeat right center;
+}
+
+.hab-ContentContainer .ms-WPBody .hab-StepList ul.hab-ListStep3,
+.hab-ContentContainer .ms-WPBody .hab-StepList2 ul.hab-ListStep3 {
+    background:url("../images/servus/bg_paccount_stepsList_3.png") no-repeat left center;
+}
+
+.hab-ContentContainer .ms-WPBody .hab-StepList .first,
+.hab-ContentContainer .ms-WPBody .hab-StepList2 .first {
+    margin:11px 45px 0;
+}
+
+.hab-ContentContainer .ms-WPBody .hab-StepList .second {
+    margin:11px 50px 0;
+}
+
+.hab-ContentContainer .ms-WPBody .hab-StepList2 .second {
+    margin:11px 60px 0;
+}
+
+.hab-ContentContainer .ms-WPBody .hab-StepList .third,
+.hab-ContentContainer .ms-WPBody .hab-StepList2 .third {
+    margin:11px 0 0 50px;
+}
+
+.hab-ContentContainer .ms-WPBody .hab-StepList ul.hab-ListStep3 .first,
+.hab-ContentContainer .ms-WPBody .hab-StepList2 ul.hab-ListStep3 .first {
+    margin:11px 50px 0;
+}
+
+.hab-ContentContainer .ms-WPBody .hab-StepList ul.hab-ListStep3 .second {
+    margin:11px 50px 0 55px;
+}
+
+.hab-ContentContainer .ms-WPBody .hab-StepList2 ul.hab-ListStep3 .second {
+    margin:11px 55px 0 65px;
+}
+/*------------------------------------------------------------
+
+Currency Converter
+
+------------------------------------------------------------*/
+
+.hab-CurrencyConverter {
+    background: transparent;
+    border: 0;
+    margin-bottom:10px; /*JW*/
+}
+.hab-CurrencyConverter fieldset {
+    display: none;
+}
+.hab-CurrencyConverter .hab-LabelInput {
+    padding: 0;
+    margin-bottom:20px;  /*JW*/
+}
+.hab-CurrencyConverter fieldset .hab-LabelInput {
+    float: left;
+    width: auto;
+    clear: none;
+    padding: 0;
+    overflow:hidden;    /*JW*/
+}
+.hab-CurrencyConverter .hab-Label {
+    margin: 10px 15px 0 0;
+    padding-top: 0;
+    text-align: left;
+    font-size: 12px;
+    width: auto;
+}
+.hab-CurrencyConverter .hab-Select {
+    width: 300px;
+    margin-bottom: 0;
+    font-size:150%;
+}
+.hab-CurrencyConverter fieldset .hab-Label {
+    font-weight: normal;
+    margin-right: 5px;
+}
+.hab-CurrencyConverter fieldset .hab-InputText {
+    margin: 6px 0 0 0;
+    width: 110px;
+    height: 18px;
+    font-size:150%;
+}
+.hab-CurrencyConverter fieldset .hab-Select {
+    width: 153px;
+    margin-right: 0;
+    margin-bottom: 5px;
+    margin-left:2px;    /*JW*/
+}
+.hab-CurrencyConverter span.to {
+    color: #2b5c9d;
+    font-weight: 700;
+    font-size: 13px;
+    margin: 9px 15px 0 15px;
+}
+.hab-CurrencyConverter .foreignToCanadian .hab-Select {
+    margin-right: 15px;
+}
+.hab-CurrencyConverter .hab-ConvertedAmount {
+    font: normal 32px/100% 'effra', Arial, 'Helvetica Neue', Helvetica, sans-serif; /* JW */
+    color: #00559e;
+    float: left;
+    margin: 1px 0 0 8px;
+}
+.hab-CurrencyConverter .hab-ConvertedAmount span.symbol {
+    font-size: 14px;
+    text-transform: uppercase;
+    float: none;
+    display: inline;
+}
+
+/*Remove the separator from the Currency Converter JW */
+.hab-CurrencyConverter fieldset div.separator {
+    display: none;
+}
+
+
+/*------------------------------------------------------------
+
+Success and Error Messages
+
+------------------------------------------------------------*/
+
+.srv-OneColumnPanel {
+    width:400px;
+}
+
+.srv-TwoColumnPanel {
+    margin-top:30px;
+    width:650px;
+}
+
+.srv-SuccessPanel {
+    background:url("../images/servus/bullet_successPanel.gif") no-repeat scroll 10px 10px #F2F9EF;
+    border-bottom:1px solid #E6F3E0;
+    border-top:1px solid #E6F3E0;
+    color:#333;
+    padding:10px 10px 10px 40px;    
+    width:93%;   
+/*    width:100%;    */         /* JR */
+}
+
+.ms-WPBody .srv-SuccessPanel h2 {
+    font: normal 22px/36px 'effra', Arial, 'Helvetica Neue', Helvetica, sans-serif !important;  /* JW */
+    color:#50a747;
+    margin:0 0 10px;
+}
+
+
+
+
+/*------------------------------------------------------------
+
+Miscellaneous & general purpose styles
+
+------------------------------------------------------------*/
+
+/* general visibility styles */
+
+.srv-Hidden { display: none !important; }
+.srv-Visible { display: block !important; }
+
+
+/*------------------------------------------------------------
+
+Re-branded modal dialogs
+
+------------------------------------------------------------*/
+
+.srv-Modal-rebrand {
+    display: none;
+    font: 11pt/16pt 'Helvetica Neue', Helvetica, sans-serif;
+	position: relative;
+	overflow: visible !important;
+	z-index: 20002 !important;
+    -webkit-font-smoothing: antialiased;
+    -moz-font-smoothing: antialiased;
+    -o-font-smoothing: antialiased;
+    font-smoothing: antialiased;
+}
+
+.srv-Modal-rebrand h1 {
+    color: #0072bc;
+    font: 16pt/24pt 'effra', Arial, 'Helvetica Neue', Helvetica, sans-serif;
+	margin: 0 0 10px 0; 
+	overflow: hidden;
+ }
+
+.srv-Modal-rebrand h5 {
+    color: #0072bc;
+    font: 14pt/22pt 'effra', Arial, 'Helvetica Neue', Helvetica, sans-serif;
+}
+
+.srv-Modal-rebrand h6 {
+    color: #0072bc;
+    font: 12pt/16pt 'effra medium', Arial, 'Helvetica Neue', Helvetica, sans-serif;
+}
+
+.srv-Modal-rebrand p {
+    color: #5a5a5a;
+}
+
+.srv-Modal-rebrand a {
+    color: #77bf44 !important;
+}

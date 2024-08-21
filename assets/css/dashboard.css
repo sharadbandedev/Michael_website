@@ -1,0 +1,83 @@
+ 
+        body, html {
+            height: 100%;
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
+        #wrapper {
+            display: flex;
+            height: 100%;
+            overflow-x: hidden;
+        }
+        #sidebar-wrapper {
+            width: 250px;
+            height: 100%;
+            background-color: #343a40;
+            position: fixed;
+            top: 0;
+            left: 0;
+            transition: all 0.3s;
+        }
+        #page-content-wrapper {
+            margin-left: 250px;
+            width: 100%;
+            padding: 20px;
+            overflow-y: auto;
+            background-color: #f8f9fa;
+            transition: all 0.3s;
+        }
+        #wrapper.toggled #sidebar-wrapper {
+            margin-left: -250px;
+        }
+        #wrapper.toggled #page-content-wrapper {
+            margin-left: 0;
+        }
+        .sidebar-heading {
+            padding: 1rem;
+            font-size: 1.2rem;
+            color: #ffffff;
+            text-align: center;
+            background-color: #23272b;
+        }
+        .list-group-item {
+            color: #ffffff;
+            background-color: #343a40;
+        }
+        .list-group-item:hover {
+            background-color: #495057;
+        }
+        .navbar {
+            margin-bottom: 20px;
+        }
+        #menu-toggle {
+            background-color: #343a40;
+            border: none;
+            color: #ffffff;
+            padding: 10px 15px;
+            cursor: pointer;
+        }
+        #menu-toggle:hover {
+            background-color: #23272b;
+        }
+        /* Hamburger icon */
+        .navbar-toggler-icon {
+            background-image: url('data:image/svg+xml;charset=UTF8,%3Csvg viewBox="0 0 30 30" xmlns="http://www.w3.org/2000/svg"%3E%3Cpath stroke="rgba%2877, 77, 77, 0.7%29" stroke-width="2" stroke-linecap="round" stroke-miterlimit="10" d="M4 7h22M4 15h22M4 23h22"/%3E%3C/svg%3E');
+        }
+        @media (max-width: 768px) {
+            #sidebar-wrapper {
+                margin-left: -250px;
+            }
+            #page-content-wrapper {
+                margin-left: 0;
+            }
+            #wrapper.toggled #sidebar-wrapper {
+                margin-left: 0;
+            }
+            #wrapper.toggled #page-content-wrapper {
+                margin-left: 250px;
+            }
+        }
+        .dashtitle{
+            /* color: #007bff; */
+        }
+     
